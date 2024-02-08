@@ -10,42 +10,51 @@ console.log("Cuantos Procesos se Ejecutaran? ");
 let numProcesos = process.argv[2] ? parseInt(process.argv[2]) : 1;
 console.log("El numero de procesos son: " + numProcesos);
 
-
-  for (i = 0; i < numProcesos; i++) {
-
+for (i = 0; i < numProcesos; i++) {
     lista[i] = crearProcesoNuevo();
-    
-  }
+}
 
-  switch (contador) {
+let numlista=0
 
-    case 0: console.log(lista[contador].proceso.numeroProceso); break;
+do{
 
-    case 1: console.log(lista[contador].proceso.cadena1); break;
+while(numlista<lista.length){
 
-    case 2:console.log( lista[contador].proceso.cadena2); break;
+console.log("Proceso "+lista[numlista].numeroProceso);
 
-    case 3: console.log(lista[contador].proceso.cadena3); break
+switch (contador) {
 
-  }
+    case 0: console.log(lista[numlista].cadena1); break;
+    case 1: console.log(lista[numlista].cadena2); break;
+    case 2: console.log(lista[numlista].cadena3); break;
 
+}
+
+numlista++
+
+}
+
+contador++
+
+}while(contador>3)
 
 function crearProcesoNuevo() {
-  let proceso;
+    let proceso;
 
-  if (id > 1) {
-    caracter = String.fromCharCode(caracter.charCodeAt(0) + 1);;
-  }
+    if (id > 1) {
+        caracter = String.fromCharCode(caracter.charCodeAt(0) + 1);
+    }
 
-  proceso = {
+    proceso = {
+        numeroProceso: id,
+        cadena1: "" + caracter + "=" + num1 + "+" + num2,
+        cadena2: "console.log(" + num1 + "+" + num2 + ")",
+        cadena3: "console.log(" + caracter + ")",
+    }
 
-    numeroProceso: id,
-    cadena1: "" + caracter + "=" + num1 + "+" + num2,
-    cadena2: "console.log(" + num1 + "+" + num2 + ")",
-    cadena3: "console.log(" + caracter + ")",
+    id++;
+    num1=num1+2;
+    num2=num2+2;
 
-  }
-
-  id++;
-  return proceso;
+    return proceso;
 }
