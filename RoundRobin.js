@@ -8,9 +8,7 @@ function crearProcesoNuevo(){
 
     proceso={
 
-        
-
-    }
+        }
 
 
 }
