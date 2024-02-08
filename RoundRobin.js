@@ -21,7 +21,7 @@ do{
 while(numlista<lista.length){
 
 console.log("Proceso "+lista[numlista].numeroProceso);
-
+//cantidad de lineas de codigo aleatorio
 switch (contador) {
 
     case 0: console.log(lista[numlista].cadena1); break;
