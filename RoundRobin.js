@@ -1,42 +1,21 @@
+
+/*Variables*/
+
 let id = 1;
 let caracter = 'a';
 let num1 = 1;
 let num2 = 2;
 let lista = [];
 let contador = 0;
+let numlista=0;
+let numProcesos;
 
-console.log("RoundRobin Algoritmo");
-console.log("Cuantos Procesos se Ejecutaran? ");
-let numProcesos = process.argv[2] ? parseInt(process.argv[2]) : 1;
-console.log("El numero de procesos son: " + numProcesos);
+/*Programa*/
 
-for (i = 0; i < numProcesos; i++) {
-    lista[i] = crearProcesoNuevo();
-}
+inicializarSimulacion();
+empezarSimulacion();
 
-let numlista=0
-
-do{
-
-while(numlista<lista.length){
-
-console.log("Proceso "+lista[numlista].numeroProceso);
-//cantidad de lineas de codigo aleatorio
-switch (contador) {
-
-    case 0: console.log(lista[numlista].cadena1); break;
-    case 1: console.log(lista[numlista].cadena2); break;
-    case 2: console.log(lista[numlista].cadena3); break;
-
-}
-
-numlista++
-
-}
-
-contador++
-
-}while(contador>3)
+/*Funciones*/
 
 function crearProcesoNuevo() {
     let proceso;
@@ -57,4 +36,52 @@ function crearProcesoNuevo() {
     num2=num2+2;
 
     return proceso;
+}
+
+function escogerLinea(contador){
+
+    switch (contador) {
+
+        case 0: console.log(lista[numlista].cadena1); break;
+        case 1: console.log(lista[numlista].cadena2); break;
+        case 2: console.log(lista[numlista].cadena3); break;
+    
+    }
+}
+
+function inicializarSimulacion(){
+
+    console.log("RoundRobin Algoritmo");
+    console.log("Cuantos Procesos se Ejecutaran? ");
+    numProcesos = process.argv[2] ? parseInt(process.argv[2]) : 1;
+    console.log("El numero de procesos son: " + numProcesos);
+
+    
+}
+
+function empezarSimulacion(){
+
+    for (i = 0; i < numProcesos; i++) {
+        lista[i] = crearProcesoNuevo();
+    }
+    
+    do{
+    
+    while(numlista<lista.length){
+    
+    console.log("Proceso "+lista[numlista].numeroProceso);
+    
+    escogerLinea(contador); 
+    
+    numlista++;
+    
+    }
+    
+    contador++;
+    
+    numlista=0;
+    
+    }while(contador<3);
+
+
 }
