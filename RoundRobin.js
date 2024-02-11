@@ -15,6 +15,9 @@ let numProcesos;
 inicializarSimulacion();
 empezarSimulacion();
 
+//inicializarhtml();
+//empezarhtml();
+
 /*Funciones*/
 
 function crearProcesoNuevo() {
@@ -37,7 +40,6 @@ function crearProcesoNuevo() {
 
     return proceso;
 }
-
 function escogerLinea(contador){
 
     switch (contador) {
@@ -48,7 +50,6 @@ function escogerLinea(contador){
     
     }
 }
-
 function inicializarSimulacion(){
 
     console.log("RoundRobin Algoritmo");
@@ -56,9 +57,7 @@ function inicializarSimulacion(){
     numProcesos = process.argv[2] ? parseInt(process.argv[2]) : 1;
     console.log("El numero de procesos son: " + numProcesos);
 
-    
 }
-
 function empezarSimulacion(){
 
     for (i = 0; i < numProcesos; i++) {
@@ -83,5 +82,31 @@ function empezarSimulacion(){
     
     }while(contador<3);
 
+}
+function inicializarhtml(){
+
+    console.log("RoundRobin Algoritmo");
+    console.log("Cuantos Procesos se Ejecutaran? ");
+    numProcesos = 5;
+    console.log("El numero de procesos son: " + numProcesos);
+}
+function empezarhtml(){
+    const procesosContainer = document.getElementById('procesos-container');
+    const consola = document.getElementById('consola');
+
+    for (let i = 0; i < numProcesos; i++) {
+        const proceso = crearProcesoNuevo();
+        const procesoDiv = document.createElement('div');
+        procesoDiv.className = 'proceso';
+        procesoDiv.innerHTML = `
+            <h3>Proceso ${proceso.numeroProceso}</h3>
+            <p>${proceso.cadena1}</p>
+            <p>${proceso.cadena2}</p>
+            <p>${proceso.cadena3}</p>
+        `;
+        procesosContainer.appendChild(procesoDiv);
+    }
+
+    empezarSimulacion();
 
 }
